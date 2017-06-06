@@ -31,6 +31,7 @@
     "less-loader": "^2.2.3",
     "monkey-hot-loader": "0.0.3",
     "morgan": "^1.7.0",
+    "object-assign": "^4.1.1",
     "script-loader": "^0.7.0",
     "strip-ansi": "^3.0.0",
     "style-loader": "^0.13.1",
