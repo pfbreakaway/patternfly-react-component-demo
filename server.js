@@ -10,7 +10,7 @@ var express = require('express'),
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({extended: false}));
 console.log('serving from this folder: ' + path.join(__dirname, 'dist'));
-app.use('/app', express.static(path.join(__dirname , 'dist')));
+app.use('/react', express.static(path.join(__dirname , 'dist')));
 
 Object.assign=require('object-assign');
 
