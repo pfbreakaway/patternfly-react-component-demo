@@ -5,6 +5,13 @@
     </div>
 </template>
 
+    <!-- React Tab Template -->
+    <template class="react-tab-template">
+        <li role="presentation">
+            <a href="/html" role="tab"></a>
+        </li>
+    </template>
+
     <!-- Tab Template -->
     <template class="tab-template">
         <li role="presentation">
@@ -33,6 +40,7 @@
         var doc = (document._currentScript || document.currentScript).ownerDocument;
         var tabsTemplate = doc.querySelector('.tabs-template');
         var tabTemplate = doc.querySelector('.tab-template');
+        var reactTabTemplate = doc.querySelector('.react-tab-template');
         var panelTemplate = doc.querySelector('.panel-template');
         var forEach = Array.prototype.forEach;
 
@@ -100,7 +108,62 @@
             return PfTab;
         }(HTMLElement);
 
-        //PfTabs Custom Element
+      //PfTabReact Custom Element
+
+      var PfTabReact = function (_HTMLElement) {
+        _inherits(PfTabReact, _HTMLElement);
+
+        function PfTabReact() {
+          _classCallCheck(this, PfTabReact);
+
+          return _possibleConstructorReturn(this, (PfTabReact.__proto__ || Object.getPrototypeOf(PfTabReact)).apply(this, arguments));
+        }
+
+        _createClass(PfTabReact, [{
+          key: 'attachedCallback',
+          value: function attachedCallback() {
+            // this.createShadowRoot();
+            // this.shadowRoot.appendChild(
+            //   document.importNode(panelTemplate.content, true)
+            // );
+            this.appendChild(document.importNode(panelTemplate.content, true));
+          }
+        }, {
+          key: 'attributeChangedCallback',
+          value: function attributeChangedCallback(attributeName, oldValue, newValue) {
+            var parent = this.parentNode;
+            if (attributeName === 'title' && parent && parent.handleTitle) {
+              parent.handleTitle(this, newValue);
+            }
+          }
+        }, {
+          key: 'title',
+          get: function get() {
+            return this._title;
+          },
+          set: function set(value) {
+            if (this._title !== value) {
+              this._title = value;
+              this.setAttribute('title', value);
+            }
+          }
+        }, {
+          key: 'active',
+          get: function get() {
+            return this._active;
+          },
+          set: function set(value) {
+            if (this._active !== value) {
+              this._active = value;
+              this.setAttribute('active', value);
+            }
+          }
+        }]);
+
+        return PfTabReact;
+      }(HTMLElement);
+
+      //PfTabs Custom Element
 
 
         var PfTabs = function (_HTMLElement2) {
@@ -130,6 +193,7 @@
                     this.insertBefore(document.importNode(tabsTemplate.content, true), this.firstChild);
 
                     this.makeTabsFromPfTab();
+                    this.makeTabsFromPfTabReact();
 
                     // this.shadowRoot.querySelector('ul').addEventListener('click', this);
                     this.querySelector('ul').addEventListener('click', this);
@@ -243,6 +307,27 @@
                     }.bind(this));
                 }
             }, {
+              key: 'makeTabsFromPfTabReact',
+              value: function makeTabsFromPfTabReact() {
+                // var ul = this.shadowRoot.querySelector('ul');
+                var ul = this.querySelector('ul');
+                var pfTabs = this.querySelectorAll('pf-tab-react');
+                [].forEach.call(pfTabs, function (pfTabReact, idx) {
+                  var tab = this.makeTabReact(pfTabReact);
+                  ul.appendChild(tab);
+                  /*
+                  this.tabMap.set(tab, pfTabReact);
+                  //this.panelMap.set(pfTabReact, tab);
+
+                  if (idx === 0) {
+                    this.makeActive(tab);
+                  } else {
+                    pfTab.style.display = 'none';
+                  }
+                  */
+                }.bind(this));
+              }
+            }, {
                 key: 'makeTab',
                 value: function makeTab(pfTab) {
                     var frag = document.importNode(tabTemplate.content, true);
@@ -253,6 +338,17 @@
                     this.displayMap.set(pfTab, pfTab.style.display);
                     return tab;
                 }
+            }, {
+              key: 'makeTabReact',
+              value: function makeTab(pfTabReact) {
+                var frag = document.importNode(reactTabTemplate.content, true);
+                var tab = frag.firstElementChild;
+                var tabAnchor = tab.firstElementChild;
+                tabAnchor.innerHTML = pfTabReact.attributes && pfTabReact.attributes.title ?
+                  pfTabReact.attributes.title.value : pfTabReact.title;
+                //this.displayMap.set(pfTabReact, pfTabReact.style.display);
+                return tab;
+              }
             }, {
                 key: 'makeActive',
                 value: function makeActive(tab) {
@@ -290,4 +386,5 @@
 
         document.registerElement('pf-tab', PfTab);
         document.registerElement('pf-tabs', PfTabs);
+        document.registerElement('pf-tab-react', PfTabReact);
     })();</script></head><body></body></html>

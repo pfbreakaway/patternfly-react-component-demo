@@ -23,6 +23,8 @@ export default class Tabs extends React.Component {
         <pf-tab title={"Empty State"}>
           <EmptyState />
         </pf-tab>
+        <pf-tab-react title={"HTML"}>
+        </pf-tab-react>
       </pf-tabs>
     );
   }
