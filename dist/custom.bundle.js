@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7bcc29016d46d8d760e4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0686f2e9f011a7ce6ea0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -9244,13 +9244,13 @@
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(37)(__webpack_require__(85)+"\n\n// SCRIPT-LOADER FOOTER\n//# sourceURL=script:///Users/dlabrecq/Work/breakaway/repos/pfbreakaway-react-component-demo/node_modules/patternfly/node_modules/c3/c3.min.js")
+	__webpack_require__(37)(__webpack_require__(85)+"\n\n// SCRIPT-LOADER FOOTER\n//# sourceURL=script:///Users/dgutride/Source/breakaway/patternfly-react-component-demo/node_modules/patternfly/node_modules/c3/c3.min.js")
 
 /***/ }),
 /* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(37)(__webpack_require__(86)+"\n\n// SCRIPT-LOADER FOOTER\n//# sourceURL=script:///Users/dlabrecq/Work/breakaway/repos/pfbreakaway-react-component-demo/node_modules/patternfly/node_modules/d3/d3.min.js")
+	__webpack_require__(37)(__webpack_require__(86)+"\n\n// SCRIPT-LOADER FOOTER\n//# sourceURL=script:///Users/dgutride/Source/breakaway/patternfly-react-component-demo/node_modules/patternfly/node_modules/d3/d3.min.js")
 
 /***/ }),
 /* 109 */
@@ -14858,6 +14858,19 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container-fluid' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'React List View'
+	            )
+	          )
+	        ),
 	        _react2.default.createElement(_Toolbar2.default, null),
 	        _react2.default.createElement(
 	          'div',
@@ -16499,25 +16512,12 @@
 	      return _react2.default.createElement(
 	        'pf-tabs',
 	        { ref: 'tabs' },
-	        '\u2028',
+	        _react2.default.createElement('pf-tab-react', { title: "Html Dashboard" }),
 	        _react2.default.createElement(
 	          'pf-tab',
-	          { title: "Dashboard", active: "true" },
-	          '\u2028',
-	          _react2.default.createElement(_Cards2.default, null),
-	          '\u2028'
-	        ),
-	        _react2.default.createElement(
-	          'pf-tab',
-	          { title: "List View" },
+	          { title: "React List View", active: "true" },
 	          _react2.default.createElement(_ListView2.default, null)
-	        ),
-	        _react2.default.createElement(
-	          'pf-tab',
-	          { title: "Empty State" },
-	          _react2.default.createElement(_EmptyState2.default, null)
-	        ),
-	        _react2.default.createElement('pf-tab-react', { title: "React" })
+	        )
 	      );
 	    }
 	  }]);

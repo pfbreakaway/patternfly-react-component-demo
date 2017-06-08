@@ -32,9 +32,17 @@ export default class ListView extends React.Component {
   render() {
     return (
       <div className="container-fluid">
+        <div className="row">
+          <div className="col-xs-12">
+            <h1>
+              React List View
+            </h1>
+          </div>
+        </div>
         <Toolbar/>
 
         <div className="row">
+
           <div className="col-md-12">
 
             <div className="list-group list-view-pf">
